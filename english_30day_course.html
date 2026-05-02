@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English за 30 дней · IT Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Unbounded:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0e12;
+  --surface: #16161d;
+  --surface2: #1e1e28;
+  --surface3: #252534;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #f0eeff;
+  --muted: #8b8ba0;
+  --dim: #525265;
+  --green: #f472b6;
+  --green-dim: rgba(244,114,182,0.12);
+  --green-border: rgba(244,114,182,0.3);
+  --purple: #a78bfa;
+  --purple-dim: rgba(167,139,250,0.12);
+  --purple-border: rgba(167,139,250,0.3);
+  --blue: #60c0ff;
+  --blue-dim: rgba(96,192,255,0.12);
+  --blue-border: rgba(96,192,255,0.3);
+  --amber: #fbbf24;
+  --amber-dim: rgba(251,191,36,0.12);
+  --amber-border: rgba(251,191,36,0.3);
+  --red: #f87171;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --font: 'Manrope', sans-serif;
+  --font-display: 'Unbounded', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.7;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+.container{max-width:780px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+.header{padding:60px 0 40px;text-align:center}
+.header-badge{display:inline-flex;align-items:center;gap:8px;background:var(--green-dim);border:1px solid var(--green-border);border-radius:40px;padding:6px 16px;font-size:12px;font-weight:600;color:var(--green);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:28px}
+.header-badge span{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}}
+.header h1{font-family:var(--font-display);font-size:clamp(28px,6vw,52px);font-weight:700;line-height:1.1;margin-bottom:16px;letter-spacing:-1px}
+.header h1 .accent{color:var(--green)}
+.header p{color:var(--muted);font-size:16px;max-width:480px;margin:0 auto 28px}
+.header-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.htag{padding:5px 14px;border-radius:40px;font-size:12px;font-weight:600;border:1px solid}
+.htag-g{color:var(--green);background:var(--green-dim);border-color:var(--green-border)}
+.htag-p{color:var(--purple);background:var(--purple-dim);border-color:var(--purple-border)}
+.htag-b{color:var(--blue);background:var(--blue-dim);border-color:var(--blue-border)}
+.htag-a{color:var(--amber);background:var(--amber-dim);border-color:var(--amber-border)}
+.progress-section{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);padding:20px 24px;margin-bottom:32px}
+.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.progress-top span{font-size:13px;color:var(--muted)}
+.progress-top strong{font-size:18px;font-weight:700;color:var(--green);font-family:var(--font-display)}
+.bar-track{height:6px;background:var(--surface3);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--green),#818cf8);border-radius:3px;transition:width 0.5s cubic-bezier(.4,0,.2,1)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.stat{background:var(--surface2);border-radius:var(--radius-sm);padding:12px;text-align:center}
+.stat-val{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--text)}
+.stat-label{font-size:11px;color:var(--muted);margin-top:2px}
+.week-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:28px}
+.wnav{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 8px;cursor:pointer;text-align:center;transition:all 0.2s}
+.wnav:hover{border-color:var(--border2);background:var(--surface2)}
+.wnav.active-w1{background:var(--green-dim);border-color:var(--green-border)}
+.wnav.active-w2{background:var(--purple-dim);border-color:var(--purple-border)}
+.wnav.active-w3{background:var(--amber-dim);border-color:var(--amber-border)}
+.wnav.active-w4{background:var(--blue-dim);border-color:var(--blue-border)}
+.wnav .wn{font-family:var(--font-display);font-size:20px;font-weight:700;display:block;margin-bottom:2px}
+.wnav.active-w1 .wn{color:var(--green)}
+.wnav.active-w2 .wn{color:var(--purple)}
+.wnav.active-w3 .wn{color:var(--amber)}
+.wnav.active-w4 .wn{color:var(--blue)}
+.wnav .wt{font-size:11px;color:var(--muted)}
+.week-section{display:none}
+.week-section.show{display:block}
+.week-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.week-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.w1 .week-icon{background:var(--green-dim)}
+.w2 .week-icon{background:var(--purple-dim)}
+.w3 .week-icon{background:var(--amber-dim)}
+.w4 .week-icon{background:var(--blue-dim)}
+.week-meta h2{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text)}
+.week-meta p{font-size:12px;color:var(--muted);margin-top:2px}
+.day-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;transition:border-color 0.2s}
+.day-card:hover{border-color:var(--border2)}
+.day-card.done{border-color:rgba(244,114,182,0.4)}
+.day-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none}
+.day-num{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:12px;font-weight:700;flex-shrink:0}
+.w1 .day-num{background:var(--green-dim);color:var(--green)}
+.w2 .day-num{background:var(--purple-dim);color:var(--purple)}
+.w3 .day-num{background:var(--amber-dim);color:var(--amber)}
+.w4 .day-num{background:var(--blue-dim);color:var(--blue)}
+.day-title{font-size:14px;font-weight:600;flex:1;color:var(--text)}
+.day-check{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--dim);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;transition:all 0.2s}
+.day-card.done .day-check{background:var(--green);border-color:var(--green);color:#2d0a1e}
+.day-arrow{font-size:12px;color:var(--dim);transition:transform 0.2s;flex-shrink:0}
+.day-card.open .day-arrow{transform:rotate(90deg)}
+.day-body{display:none;padding:0 16px 16px;border-top:1px solid var(--border)}
+.day-card.open .day-body{display:block}
+.section-row{margin-top:14px}
+.section-row label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:6px}
+.section-row p{font-size:13px;color:var(--muted);line-height:1.65}
+.section-row p code{font-family:var(--font-mono);font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:4px;color:var(--text)}
+.example-block{background:#0a0a10;border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;margin-top:8px;font-size:13px;line-height:1.8;overflow-x:auto}
+.example-block .en{color:#f0eeff;font-style:italic}
+.example-block .ru{color:var(--muted);font-size:12px}
+.example-block .formula{color:var(--green);font-family:var(--font-mono);font-size:12px;font-weight:600}
+.example-block .bad{color:#f87171}
+.example-block .good{color:#86efac}
+.example-block .hl{color:var(--amber);font-weight:600}
+.example-block .label{color:var(--green);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:4px}
+.table-wrap{overflow-x:auto;margin-top:10px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:var(--surface3);padding:8px 12px;text-align:left;font-weight:700;color:var(--text);border:1px solid var(--border2)}
+td{padding:7px 12px;border:1px solid var(--border);color:var(--muted);line-height:1.6}
+tr:nth-child(even) td{background:var(--surface2)}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.pill{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--surface2);border:1px solid var(--border);color:var(--muted)}
+.tip{background:var(--amber-dim);border:1px solid var(--amber-border);border-radius:var(--radius-sm);padding:10px 14px;margin-top:10px}
+.tip .tip-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+.tip p{font-size:12px;color:rgba(251,191,36,0.85);line-height:1.6}
+.tip-info{background:var(--green-dim);border:1px solid var(--green-border)}
+.tip-info .tip-label{color:var(--green)}
+.tip-info p{color:rgba(244,114,182,0.85)}
+.answer-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);margin-top:8px;overflow:hidden}
+.answer-toggle{padding:10px 14px;cursor:pointer;font-size:12px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:6px;user-select:none}
+.answer-toggle::before{content:'▶';font-size:9px;transition:transform 0.2s}
+.answer-toggle.open::before{transform:rotate(90deg)}
+.answer-content{display:none;padding:0 14px 14px;border-top:1px solid var(--border)}
+.answer-content.show{display:block}
+.answer-content p{font-size:13px;color:var(--muted);line-height:1.7;margin-top:10px}
+.answer-content .en{color:var(--text);font-style:italic}
+.answer-content .note{font-size:11px;color:var(--dim);margin-top:6px}
+.task-box{background:var(--surface2);border:1px solid var(--border);border-left:3px solid;border-radius:var(--radius-sm);padding:12px 14px;margin-top:10px}
+.w1 .task-box{border-left-color:var(--green)}
+.w2 .task-box{border-left-color:var(--purple)}
+.w3 .task-box{border-left-color:var(--amber)}
+.w4 .task-box{border-left-color:var(--blue)}
+.task-box .task-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.w1 .task-box .task-label{color:var(--green)}
+.w2 .task-box .task-label{color:var(--purple)}
+.w3 .task-box .task-label{color:var(--amber)}
+.w4 .task-box .task-label{color:var(--blue)}
+.task-box p{font-size:12px;color:var(--muted);line-height:1.6}
+.task-box ol,.task-box ul{margin:6px 0 0 16px}
+.task-box li{font-size:12px;color:var(--muted);margin-bottom:3px}
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.lnk{font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;border:1px solid var(--border2);color:var(--muted);text-decoration:none;background:var(--surface2);transition:all 0.15s}
+.lnk:hover{color:var(--text);border-color:var(--border2)}
+.mini-project{border-radius:var(--radius);padding:22px 24px;margin:20px 0;border:1px solid}
+.w1 .mini-project{background:var(--green-dim);border-color:var(--green-border)}
+.w2 .mini-project{background:var(--purple-dim);border-color:var(--purple-border)}
+.w3 .mini-project{background:var(--amber-dim);border-color:var(--amber-border)}
+.w4 .mini-project{background:var(--blue-dim);border-color:var(--blue-border)}
+.mp-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.w1 .mp-label{color:var(--green)}
+.w2 .mp-label{color:var(--purple)}
+.w3 .mp-label{color:var(--amber)}
+.w4 .mp-label{color:var(--blue)}
+.mini-project h3{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px}
+.mini-project p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:10px}
+.checklist{list-style:none}
+.checklist li{font-size:13px;color:var(--muted);padding:4px 0;display:flex;gap:8px;align-items:flex-start}
+.w1 .checklist li::before{content:"▶";color:var(--green);font-size:9px;margin-top:5px;flex-shrink:0}
+.w2 .checklist li::before{content:"▶";color:var(--purple);font-size:9px;margin-top:5px;flex-shrink:0}
+.w3 .checklist li::before{content:"▶";color:var(--amber);font-size:9px;margin-top:5px;flex-shrink:0}
+.w4 .checklist li::before{content:"▶";color:var(--blue);font-size:9px;margin-top:5px;flex-shrink:0}
+.footer{text-align:center;padding:48px 0 32px;color:var(--dim);font-size:13px;border-top:1px solid var(--border);margin-top:40px}
+.footer span{color:var(--green)}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--dim);border-radius:2px}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-badge"><span></span>Курс активен · 30 дней</div>
+    <h1>English за <span class="accent">30 дней</span></h1>
+    <p>Grammar · IELTS · Technical English · Speaking · Listening. Каждый день — два модуля и одна задача.</p>
+    <div class="header-tags">
+      <span class="htag htag-g">IELTS</span>
+      <span class="htag htag-p">Grammar</span>
+      <span class="htag htag-b">Tech English</span>
+      <span class="htag htag-a">Speaking</span>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-section">
+    <div class="progress-top"><span>Общий прогресс</span><strong id="prog-val">0%</strong></div>
+    <div class="bar-track"><div class="bar-fill" id="bar" style="width:0%"></div></div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-val" id="done-count">0</div><div class="stat-label">выполнено дней</div></div>
+      <div class="stat"><div class="stat-val">4</div><div class="stat-label">итоговых теста</div></div>
+      <div class="stat"><div class="stat-val">30</div><div class="stat-label">всего заданий</div></div>
+    </div>
+  </div>
+
+  <!-- WEEK NAV -->
+  <div class="week-nav">
+    <div class="wnav active-w1" onclick="showWeek(1)"><span class="wn">W1</span><span class="wt">Foundation</span></div>
+    <div class="wnav" onclick="showWeek(2)"><span class="wn">W2</span><span class="wt">Tech Talk</span></div>
+    <div class="wnav" onclick="showWeek(3)"><span class="wn">W3</span><span class="wt">IELTS</span></div>
+    <div class="wnav" onclick="showWeek(4)"><span class="wn">W4</span><span class="wt">Fluency</span></div>
+  </div>
+
+<!-- ═══════════════════════ WEEK 1 ═══════════════════════ -->
+<div id="week1" class="week-section w1 show">
+  <div class="week-header">
+    <div class="week-icon">🌟</div>
+    <div class="week-meta">
+      <h2>Неделя 1 — Foundation & Structure</h2>
+      <p>Дни 1–7 · Grammar, Pronunciation, Vocabulary · Итог: связный текст о себе</p>
+    </div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-card" id="d1">
+    <div class="day-head" onclick="toggleCard('d1')">
+      <div class="day-num">01</div>
+      <div class="day-title">Present Simple vs Present Continuous</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d1')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Грамматика — Теория</label>
+        <p><strong>Present Simple</strong> — привычки, факты, расписания. Маркеры: always, usually, every day, never.<br>
+        <strong>Present Continuous</strong> — действие прямо сейчас или временное. Маркеры: now, at the moment, currently, right now.</p>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Время</th><th>Форма</th><th>Пример</th><th>Перевод</th></tr></thead>
+        <tbody>
+          <tr><td>Present Simple</td><td>I/You/We/They + V<br>He/She/It + V+s</td><td><em>I write code every day.</em><br><em>She deploys the app on Fridays.</em></td><td>Я пишу код каждый день.<br>Она деплоит по пятницам.</td></tr>
+          <tr><td>Present Continuous</td><td>am/is/are + V-ing</td><td><em>I am writing a function now.</em><br><em>The server is loading data.</em></td><td>Я пишу функцию сейчас.<br>Сервер загружает данные.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="section-row"><label>Примеры — Tech контекст</label>
+        <div class="example-block">
+<span class="label">Present Simple (факт/привычка)</span>
+<span class="en">My AI assistant usually processes voice commands.</span>
+<span class="ru">→ Мой ИИ-ассистент обычно обрабатывает голосовые команды.</span>
+
+<span class="en">Python uses indentation instead of curly braces.</span>
+<span class="ru">→ Python использует отступы вместо фигурных скобок.</span>
+
+<span class="label">Present Continuous (прямо сейчас)</span>
+<span class="en">Right now it is connecting to the Gemini API.</span>
+<span class="ru">→ Прямо сейчас он подключается к Gemini API.</span>
+
+<span class="en">I am currently learning backend development.</span>
+<span class="ru">→ В данный момент я изучаю backend разработку.</span></div>
+      </div>
+      <div class="tip"><div class="tip-label">⚠ Частая ошибка</div><p>НЕ используй Continuous для глаголов состояния: know, understand, believe, want, need, love, hate. <span style="color:#f87171">✗ I am knowing Python.</span> → <span style="color:#86efac">✓ I know Python.</span></p></div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <p>Напиши 10 предложений о своём проекте (Lux или любом другом). 5 — Simple (что делает обычно), 5 — Continuous (что делает прямо сейчас). Используй связку <strong>"To be honest"</strong> и <strong>"However"</strong> хотя бы по одному разу.</p>
+      </div>
+      <div class="answer-box">
+        <div class="answer-toggle" onclick="toggleAnswer(this)">Показать пример ответа</div>
+        <div class="answer-content">
+          <p><span class="en">My assistant usually processes voice commands and connects to external APIs. It always remembers my preferences. However, right now it is searching for relevant data. To be honest, it is getting smarter every day. It currently is analysing my coding patterns.</span></p>
+          <p class="note">Проверь: нет ли Continuous с глаголами know/want/need? Есть ли оба маркера "To be honest" и "However"?</p>
+        </div>
+      </div>
+      <div class="links">
+        <a class="lnk" href="https://www.grammarly.com" target="_blank">🔧 Grammarly</a>
+        <a class="lnk" href="https://www.bbc.co.uk/learningenglish" target="_blank">📻 BBC Learning</a>
+        <a class="lnk" href="https://learnenglish.britishcouncil.org" target="_blank">📖 British Council</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card" id="d2">
+    <div class="day-head" onclick="toggleCard('d2')">
+      <div class="day-num">02</div>
+      <div class="day-title">Shadow Cinema: произношение и Linking Sounds</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d2')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Shadowing — что это и зачем</label>
+        <p>Shadowing (теневое повторение) — техника при которой ты повторяешь речь носителя одновременно с ним, как «тень». Лучший метод для постановки произношения и интонации. Используют полиглоты и дипломаты.</p>
+      </div>
+      <div class="section-row"><label>Linking Sounds — как слова сливаются</label>
+        <div class="example-block">
+<span class="label">Согласный + Гласный (самое частое)</span>
+<span class="en">"pick <span class="hl">it up</span>"</span> → звучит как <span class="hl">"pick-i-tup"</span>
+<span class="en">"turn <span class="hl">it on</span>"</span> → звучит как <span class="hl">"tur-ni-ton"</span>
+<span class="en">"log <span class="hl">in and</span> out"</span> → звучит как <span class="hl">"lo-gi-nan-dout"</span>
+
+<span class="label">Конечный согласный + начальный согласный</span>
+<span class="en">"best <span class="hl">code</span>"</span> → <span class="hl">t</span> почти исчезает: <span class="hl">"bes-code"</span>
+<span class="en">"back-<span class="hl">end developer</span>"</span> → <span class="hl">"backen-developer"</span>
+
+<span class="label">Гласный + гласный (вставляется W или Y)</span>
+<span class="en">"go <span class="hl">online</span>"</span> → вставляется W: <span class="hl">"go-w-online"</span>
+<span class="en">"I <span class="hl">asked</span>"</span> → вставляется Y: <span class="hl">"I-y-asked"</span></div>
+      </div>
+      <div class="section-row"><label>Словарь — Vocabulary: The Media</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Слово</th><th>Перевод</th><th>Пример</th></tr></thead>
+          <tbody>
+            <tr><td><strong>broadcast</strong></td><td>трансляция, вещание</td><td><em>The event was broadcast live.</em></td></tr>
+            <tr><td><strong>compelling</strong></td><td>захватывающий, убедительный</td><td><em>A compelling narrative keeps viewers hooked.</em></td></tr>
+            <tr><td><strong>coverage</strong></td><td>освещение (в СМИ)</td><td><em>Media coverage of the event was massive.</em></td></tr>
+            <tr><td><strong>gripping</strong></td><td>захватывающий</td><td><em>The plot twists were gripping.</em></td></tr>
+            <tr><td><strong>editorial</strong></td><td>редакционный, передовица</td><td><em>The editorial team approved the story.</em></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Shadowing:</strong> Найди интервью на YouTube (Elon Musk, Jenna Ortega, любой tech-блогер). Выпиши 3 предложения. Запиши себя. Потом включи видео и повторяй одновременно. Обрати внимание на linking sounds.</li>
+          <li><strong>Vocabulary:</strong> Напиши мини-рецензию (30–40 слов) на любой сериал («Wednesday», «Mr. Robot», «You»), используя минимум 4 слова из таблицы выше.</li>
+        </ol>
+      </div>
+      <div class="answer-box">
+        <div class="answer-toggle" onclick="toggleAnswer(this)">Пример рецензии</div>
+        <div class="answer-content">
+          <p><span class="en">Mr. Robot features <strong>compelling</strong> characters and a <strong>gripping</strong> storyline about a hacker fighting corporate power. The <strong>coverage</strong> of cybersecurity topics is surprisingly accurate. Every <strong>broadcast</strong> episode left me wanting more. The <strong>editorial</strong> choices in cinematography make it visually unique.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card" id="d3">
+    <div class="day-head" onclick="toggleCard('d3')">
+      <div class="day-num">03</div>
+      <div class="day-title">Past Simple — рассказываем о прошлом</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d3')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Грамматика — Past Simple</label>
+        <p>Используется для завершённых действий в прошлом. Regular verbs: +ed. Irregular: learn by heart (buy→bought, write→wrote, have→had).</p>
+      </div>
+      <div class="section-row"><label>Неправильные глаголы — IT контекст</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Infinitive</th><th>Past Simple</th><th>Перевод</th><th>Пример</th></tr></thead>
+          <tbody>
+            <tr><td>write</td><td>wrote</td><td>писать</td><td><em>I wrote a script yesterday.</em></td></tr>
+            <tr><td>build</td><td>built</td><td>строить</td><td><em>She built the API last week.</em></td></tr>
+            <tr><td>find</td><td>found</td><td>находить</td><td><em>We found a critical bug.</em></td></tr>
+            <tr><td>run</td><td>ran</td><td>запускать</td><td><em>He ran the tests.</em></td></tr>
+            <tr><td>break</td><td>broke</td><td>ломать</td><td><em>The update broke production.</em></td></tr>
+            <tr><td>send</td><td>sent</td><td>отправлять</td><td><em>I sent the PR for review.</em></td></tr>
+            <tr><td>understand</td><td>understood</td><td>понимать</td><td><em>I finally understood recursion.</em></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="tip"><div class="tip-label">⚠ Классическая ошибка</div><p>НЕ используй "have" для завершённых действий с указанием времени. <span style="color:#f87171">✗ I have ordered it yesterday.</span> → <span style="color:#86efac">✓ I ordered it yesterday.</span></p></div>
+      <div class="section-row"><label>IELTS Writing Task 2 — Введение</label>
+        <div class="example-block">
+<span class="label">Тема: "Is technology making us lonely?"</span>
+<span class="label">Структура Introduction:</span>
+<span class="formula">[Перефразировать тему] + [Своя позиция] + [Что будет в эссе]</span>
+
+<span class="en">It is often argued that digital technology connects people across the globe. However, in my view, the rise of social media and constant online communication has actually contributed to increased feelings of isolation in modern society. This essay will explore both perspectives before presenting my conclusion.</span>
+<span class="ru">→ Обрати внимание: не повторяй слова из темы дословно — перефразируй!</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Grammar:</strong> Опиши свою последнюю покупку на Pinduoduo (или любую другую). Что заказал? Сколько стоило? Когда пришло? Только Past Simple, 5–6 предложений.</li>
+          <li><strong>IELTS Writing:</strong> Напиши только Introduction (2–3 предложения) на тему: <em>"Social media does more harm than good."</em></li>
+        </ol>
+      </div>
+      <div class="answer-box">
+        <div class="answer-toggle" onclick="toggleAnswer(this)">Пример ответа</div>
+        <div class="answer-content">
+          <p><span class="en">I ordered a mechanical keyboard on Pinduoduo last week. It cost around 8,000 tenge. The delivery took 12 days and arrived on Monday. The quality was better than I expected. I immediately started using it for my coding sessions.</span></p>
+          <p><span class="en">IELTS intro: While social media platforms have revolutionised communication worldwide, I strongly believe their negative effects outweigh the benefits for society. This essay will examine how they contribute to mental health issues and misinformation.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card" id="d4">
+    <div class="day-head" onclick="toggleCard('d4')">
+      <div class="day-num">04</div>
+      <div class="day-title">Technical English + IELTS Speaking Part 2</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d4')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Technical English — перевод IT-фраз</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>По-русски</th><th>По-английски (правильно)</th></tr></thead>
+          <tbody>
+            <tr><td>Программа вылетает из-за ошибки</td><td><em>The program crashes due to an error.</em></td></tr>
+            <tr><td>Забыл добавить ключ API в переменные окружения</td><td><em>I forgot to add the API key to the environment variables.</em></td></tr>
+            <tr><td>Функция возвращает None вместо списка</td><td><em>The function returns None instead of a list.</em></td></tr>
+            <tr><td>Запрос выполняется слишком долго из-за индекса</td><td><em>The query runs too slowly due to a missing index.</em></td></tr>
+            <tr><td>Нужно переписать этот код — он устарел</td><td><em>This code needs to be rewritten — it is deprecated.</em></td></tr>
+            <tr><td>Сервер не отвечает</td><td><em>The server is not responding.</em></td></tr>
+            <tr><td>Мне нужно задеплоить приложение</td><td><em>I need to deploy the application.</em></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="section-row"><label>IELTS Speaking Part 2 — The Card</label>
+        <div class="example-block">
+<span class="label">Тема: "Describe a website or app you often use"</span>
+<span class="formula">Plan: What is it? → How did you find it? → What do you use it for? → Why is it important? → 2 минуты</span>
+
+<span class="en">I'd like to talk about GitHub, which is a platform I use almost every day. I discovered it about a year ago when I first started learning programming. I primarily use it to store my code projects and track changes through version control. What makes it particularly valuable is that it serves as my portfolio — future employers can see all of my work there. To be honest, I cannot imagine being a developer without it. It has completely changed how I organise and share my code.</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Translation drill:</strong> Переведи 7 фраз из таблицы на английский по памяти (не подглядывая). Потом проверь.</li>
+          <li><strong>Speaking Part 2:</strong> Запишись на 2 минуты — расскажи о GitHub, Pinduoduo или любом другом сайте который часто используешь. Следуй плану.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card" id="d5">
+    <div class="day-head" onclick="toggleCard('d5')">
+      <div class="day-num">05</div>
+      <div class="day-title">Technical Listening + Conditionals Type 1</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d5')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Conditional Type 1 — Реальное условие</label>
+        <div class="example-block">
+<span class="label">Формула: If + Present Simple → will + V</span>
+<span class="en">If I <span class="hl">bypass</span> the firewall, the system <span class="hl">will be</span> exposed.</span>
+<span class="en">If you <span class="hl">don't validate</span> input, the app <span class="hl">will crash</span>.</span>
+<span class="en">If we <span class="hl">deploy</span> this update, users <span class="hl">will lose</span> their data.</span>
+<span class="en">If she <span class="hl">runs</span> the tests, she <span class="hl">will find</span> the bug.</span>
+<span class="ru">→ Реальная ситуация в будущем. Если Х произойдёт — Y последует.</span></div>
+      </div>
+      <div class="section-row"><label>Технические глаголы — из подкастов</label>
+        <div class="pills">
+          <span class="pill">execute</span><span class="pill">install</span><span class="pill">bypass</span><span class="pill">configure</span>
+          <span class="pill">deploy</span><span class="pill">authenticate</span><span class="pill">encrypt</span><span class="pill">monitor</span>
+          <span class="pill">trigger</span><span class="pill">handle</span><span class="pill">expose</span><span class="pill">migrate</span>
+        </div>
+      </div>
+      <div class="section-row"><label>Творческое задание — Диалог хакера и ИИ</label>
+        <div class="example-block">
+<span class="label">Пример (используй Conditionals Type 1)</span>
+<span class="en"><span class="hl">Elliot:</span> If I bypass the firewall, the system will be exposed.</span>
+<span class="en"><span class="hl">AI:</span> If you proceed, I will log every action you take.</span>
+<span class="en"><span class="hl">Elliot:</span> If I delete the logs, no one will ever know.</span>
+<span class="en"><span class="hl">AI:</span> If you delete the logs, the backup server will still have copies.</span>
+<span class="en"><span class="hl">Elliot:</span> If we work together, we will find a way out.</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Listening:</strong> Посмотри 5–10 минут видео от Fireship, NetworkChuck или любого tech-блогера на английском. Выпиши 8 технических глаголов которые он использует. Составь по 1 предложению с каждым.</li>
+          <li><strong>Writing:</strong> Напиши диалог (10 реплик) между хакером и ИИ, используя Conditional Type 1 минимум в 5 репликах.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-card" id="d6">
+    <div class="day-head" onclick="toggleCard('d6')">
+      <div class="day-num">06</div>
+      <div class="day-title">Travel Vocabulary + Translation Drill</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d6')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Vocabulary — Travel & Future Life</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Слово / фраза</th><th>Перевод</th><th>Пример</th></tr></thead>
+          <tbody>
+            <tr><td><strong>rush hour</strong></td><td>час пик</td><td><em>I avoid the subway during rush hour.</em></td></tr>
+            <tr><td><strong>commute</strong></td><td>ездить на работу</td><td><em>My daily commute takes 30 minutes.</em></td></tr>
+            <tr><td><strong>metropolitan</strong></td><td>мегаполис, столичный</td><td><em>San Francisco is a metropolitan city.</em></td></tr>
+            <tr><td><strong>landmark</strong></td><td>достопримечательность</td><td><em>The Golden Gate Bridge is a landmark.</em></td></tr>
+            <tr><td><strong>hustle and bustle</strong></td><td>суета и шум</td><td><em>I love the hustle and bustle of NYC.</em></td></tr>
+            <tr><td><strong>neighbourhood</strong></td><td>район города</td><td><em>Silicon Valley is a famous tech neighbourhood.</em></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="section-row"><label>Задание на Present Continuous — будущая жизнь</label>
+        <div class="example-block">
+<span class="label">Представь: ты уже живёшь и работаешь в США. Опиши первый день.</span>
+<span class="en">I <span class="hl">am heading</span> to Manhattan by subway right now. The city <span class="hl">is buzzing</span> with energy — people <span class="hl">are rushing</span> everywhere. I <span class="hl">am looking</span> for a coffee shop near my new office. My colleague <span class="hl">is waiting</span> for me at the entrance. Today I <span class="hl">am starting</span> my new backend developer role.</span>
+<span class="ru">→ 6 разных глаголов в Present Continuous. Используй travel vocabulary.</span></div>
+      </div>
+      <div class="section-row"><label>Translation Drill — IT-фразы</label>
+        <div class="example-block">
+<span class="bad">✗ Я планирую улучшить свой бэкенд, чтобы приложение работало быстрее.</span>
+<span class="good">✓ I am planning to improve my backend so that the app works faster.</span>
+
+<span class="bad">✗ Эта функция устарела, её нужно переписать.</span>
+<span class="good">✓ This function is deprecated and needs to be rewritten.</span>
+
+<span class="bad">✗ Утечка памяти приводит к замедлению сервера.</span>
+<span class="good">✓ A memory leak is causing the server to slow down.</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <p>Напиши 80–100 слов от первого лица: ты приехал в Нью-Йорк или Сан-Франциско на работу как backend developer. Используй Present Continuous (6+ глаголов) и минимум 4 слова из таблицы vocabulary выше.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINI PROJECT W1 -->
+  <div class="mini-project">
+    <div class="mp-label">📝 Итог недели · День 7</div>
+    <h3>Week 1 Review — Связный текст о будущем</h3>
+    <p>Объедини всё что изучил за неделю в одном тексте (100–150 слов).</p>
+    <ul class="checklist">
+      <li>Используй Present Simple + Present Continuous (минимум 3 каждого)</li>
+      <li>Используй Past Simple — опиши как начал учиться программированию</li>
+      <li>Используй Conditional Type 1 — что произойдёт если добьёшься цели</li>
+      <li>Включи минимум 5 новых слов из уроков недели</li>
+      <li>Проверь себя: нет ли Continuous с глаголами know/want/need?</li>
+      <li>Запиши текст вслух — следи за linking sounds</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════ WEEK 2 ═══════════════════════ -->
+<div id="week2" class="week-section w2">
+  <div class="week-header">
+    <div class="week-icon">💼</div>
+    <div class="week-meta">
+      <h2>Неделя 2 — Tech Talk & Professional English</h2>
+      <p>Дни 8–14 · Present Perfect, Passive Voice, Job Interviews, Emails</p>
+    </div>
+  </div>
+
+  <!-- DAY 8 -->
+  <div class="day-card" id="d8">
+    <div class="day-head" onclick="toggleCard('d8')">
+      <div class="day-num">08</div>
+      <div class="day-title">Present Perfect — опыт и результат</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d8')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Грамматика</label>
+        <div class="example-block">
+<span class="label">Формула: have/has + Past Participle (3-я форма)</span>
+<span class="formula">Когда использовать:</span>
+<span class="en">1. Опыт (ever/never): <span class="hl">Have you ever deployed</span> a Flask app?</span>
+<span class="en">2. Результат (just/already/yet): I <span class="hl">have just fixed</span> the bug.</span>
+<span class="en">3. Продолжение (for/since): She <span class="hl">has been</span> coding for 6 months.</span></div>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Present Perfect</th><th>Past Simple</th></tr></thead>
+        <tbody>
+          <tr><td><em>I have built three Python projects.</em> (опыт)</td><td><em>I built a project last month.</em> (конкретное время)</td></tr>
+          <tr><td><em>She has never used Docker.</em> (опыт)</td><td><em>She never used Docker in her last job.</em></td></tr>
+          <tr><td><em>We have already deployed it.</em> (результат)</td><td><em>We deployed it on Monday.</em></td></tr>
+        </tbody>
+      </table></div>
+      <div class="section-row"><label>Professional Email — Job Application</label>
+        <div class="example-block">
+<span class="label">Subject: Application for Backend Developer Internship</span>
+
+<span class="en">Dear Hiring Team,
+
+I am writing to express my interest in the Backend Developer internship at your company. Over the past six months, I <span class="hl">have been studying</span> Python, SQL, and Linux intensively. I <span class="hl">have already built</span> several projects, including a REST API and a database management tool.
+
+I <span class="hl">have never worked</span> professionally as a developer, but I <span class="hl">have completed</span> multiple personal projects that demonstrate my skills. I am particularly interested in your company because of your focus on security.
+
+I would be grateful for the opportunity to discuss my application.
+
+Best regards,
+Alisher</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Grammar:</strong> Напиши 8 предложений о своём опыте в программировании используя Present Perfect (ever/never, just/already/yet, for/since).</li>
+          <li><strong>Email:</strong> Напиши письмо (80–100 слов) с заявкой на junior backend internship. Обязательно используй Present Perfect минимум 4 раза.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 9 -->
+  <div class="day-card" id="d9">
+    <div class="day-head" onclick="toggleCard('d9')">
+      <div class="day-num">09</div>
+      <div class="day-title">Presentation Skills + Modal Verbs</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d9')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Modal Verbs в IT-контексте</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Modal</th><th>Значение</th><th>IT-пример</th></tr></thead>
+          <tbody>
+            <tr><td><strong>can</strong></td><td>умею, способен</td><td><em>The API can handle 1000 requests per second.</em></td></tr>
+            <tr><td><strong>should</strong></td><td>рекомендация</td><td><em>You should always validate user input.</em></td></tr>
+            <tr><td><strong>must</strong></td><td>обязательство</td><td><em>The server must be restarted after changes.</em></td></tr>
+            <tr><td><strong>could</strong></td><td>возможность</td><td><em>We could use Redis to improve performance.</em></td></tr>
+            <tr><td><strong>might</strong></td><td>возможно</td><td><em>This vulnerability might expose user data.</em></td></tr>
+            <tr><td><strong>would</strong></td><td>условие</td><td><em>I would use Docker if I had more experience.</em></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="section-row"><label>Фразы для презентаций</label>
+        <div class="example-block">
+<span class="label">Начало</span>
+<span class="en">Today I'd like to walk you through... / Let me take you through the architecture...</span>
+
+<span class="label">Переход</span>
+<span class="en">Moving on to... / Now, let's look at... / This brings me to...</span>
+
+<span class="label">Объяснение</span>
+<span class="en">What this means is... / In other words... / Essentially...</span>
+
+<span class="label">Заключение</span>
+<span class="en">To sum up... / In conclusion, what we've built is... / The key takeaway here is...</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Modal Verbs:</strong> Напиши 10 советов начинающему разработчику, используя разные modal verbs.</li>
+          <li><strong>Speaking:</strong> Запиши 2-минутную презентацию своего проекта (ToDo-менеджер, портсканер — что угодно). Используй минимум 5 presentation phrases из таблицы.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 10 -->
+  <div class="day-card" id="d10">
+    <div class="day-head" onclick="toggleCard('d10')">
+      <div class="day-num">10</div>
+      <div class="day-title">Job Interview English + Future Tenses</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d10')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Future Tenses — три способа</label>
+        <div class="example-block">
+<span class="label">will — спонтанное решение или предсказание</span>
+<span class="en">I <span class="hl">will fix</span> this bug now. (решил только что)</span>
+<span class="en">In 10 years, AI <span class="hl">will replace</span> many routine jobs.</span>
+
+<span class="label">going to — план, намерение</span>
+<span class="en">I <span class="hl">am going to learn</span> Docker next month. (уже планирую)</span>
+<span class="en">We <span class="hl">are going to deploy</span> the new version tomorrow.</span>
+
+<span class="label">Present Continuous — фиксированная договорённость</span>
+<span class="en">I <span class="hl">am meeting</span> the tech lead on Friday. (встреча в календаре)</span>
+<span class="en">The team <span class="hl">is presenting</span> the demo at 3pm.</span></div>
+      </div>
+      <div class="section-row"><label>Job Interview — классические вопросы</label>
+        <div class="example-block">
+<span class="label">Q: "Tell me about yourself."</span>
+<span class="en">I'm a self-taught backend developer with a focus on Python and databases. Over the past year, I've built several projects. I'm passionate about cybersecurity, which is why I always implement secure coding practices.</span>
+
+<span class="label">Q: "Where do you see yourself in 5 years?"</span>
+<span class="en">I am going to become a senior backend engineer within 3 years. I will specialise in distributed systems and security. I'm also planning to contribute to open-source projects.</span>
+
+<span class="label">Q: "Why do you want to work here?"</span>
+<span class="en">I've been following your company for a while. I believe your focus on security aligns perfectly with my interests. I think I could contribute significantly to your backend team.</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Future Tenses:</strong> Напиши свой план обучения на 6 месяцев, используя все три формы будущего времени.</li>
+          <li><strong>Interview:</strong> Запиши ответы на все 3 вопроса (по 45–60 секунд каждый). Следи: используешь ли правильное future tense?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 11 -->
+  <div class="day-card" id="d11">
+    <div class="day-head" onclick="toggleCard('d11')">
+      <div class="day-num">11</div>
+      <div class="day-title">Passive Voice в технической документации</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d11')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Грамматика — Passive Voice</label>
+        <div class="example-block">
+<span class="label">Формула: am/is/are/was/were + Past Participle</span>
+<span class="en">Active:  <span class="hl">The developer stores</span> data in the database.</span>
+<span class="en">Passive: Data <span class="hl">is stored</span> in the database.</span>
+
+<span class="en">Active:  <span class="hl">We hash</span> passwords using bcrypt.</span>
+<span class="en">Passive: Passwords <span class="hl">are hashed</span> using bcrypt.</span>
+
+<span class="en">Active:  <span class="hl">The team deployed</span> the app yesterday.</span>
+<span class="en">Passive: The app <span class="hl">was deployed</span> yesterday.</span>
+
+<span class="ru">→ В технической документации Passive используется постоянно. Когда не важно КТО делает — важно ЧТО происходит.</span></div>
+      </div>
+      <div class="section-row"><label>IT-примеры Passive</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Active</th><th>Passive (tech docs)</th></tr></thead>
+          <tbody>
+            <tr><td>We encrypt the traffic.</td><td><em>The traffic is encrypted using TLS.</em></td></tr>
+            <tr><td>The system logs all requests.</td><td><em>All requests are logged by the middleware.</em></td></tr>
+            <tr><td>Engineers test the code.</td><td><em>The code is tested automatically via CI/CD.</em></td></tr>
+            <tr><td>We store API keys safely.</td><td><em>API keys are stored in environment variables.</em></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Grammar:</strong> Перепиши 8 активных предложений о своём проекте в пассивный залог.</li>
+          <li><strong>Listening:</strong> Послушай один эпизод Syntax.fm или Software Engineering Daily (20 мин). Запиши 5 новых слов, 3 технических концепции, 2 мнения ведущих.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 12 -->
+  <div class="day-card" id="d12">
+    <div class="day-head" onclick="toggleCard('d12')">
+      <div class="day-num">12</div>
+      <div class="day-title">IELTS Writing Task 2 — Полное эссе</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d12')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Структура Task 2 эссе (250 слов / 40 минут)</label>
+        <div class="example-block">
+<span class="label">Paragraph 1 — Introduction (2–3 предложения)</span>
+<span class="en">Перефразируй тему + своя позиция + что будешь обсуждать</span>
+
+<span class="label">Paragraph 2 — Body 1 (основной аргумент)</span>
+<span class="en">Topic sentence → Explanation → Example → Result</span>
+
+<span class="label">Paragraph 3 — Body 2 (контраргумент или второй аргумент)</span>
+<span class="en">However, some argue that... → Explanation → Concession</span>
+
+<span class="label">Paragraph 4 — Conclusion (2–3 предложения)</span>
+<span class="en">In conclusion... / To summarise... → повтори позицию другими словами</span></div>
+      </div>
+      <div class="section-row"><label>Пример — Тема: "AI will make many jobs obsolete"</label>
+        <div class="example-block">
+<span class="en"><span class="hl">Introduction:</span> The rapid advancement of artificial intelligence has sparked debate about its impact on employment. While I acknowledge that automation will eliminate certain roles, I firmly believe that AI will ultimately create more opportunities than it destroys.
+
+<span class="hl">Body 1:</span> Firstly, history shows that technological revolutions consistently generate new industries. The internet, for instance, eliminated travel agencies but created millions of jobs in e-commerce and digital marketing. Similarly, AI is already creating roles in machine learning engineering, data science, and AI ethics.
+
+<span class="hl">Body 2:</span> However, the transition will be painful for many workers. Low-skilled and repetitive jobs are particularly vulnerable. Governments must invest in retraining programmes to help displaced workers adapt to the changing economy.
+
+<span class="hl">Conclusion:</span> In conclusion, while AI will undoubtedly transform the job market, I believe it represents an opportunity rather than a threat, provided we manage the transition responsibly.</span></div>
+      </div>
+      <div class="tip"><div class="tip-label">⏱ IELTS совет</div><p>40 минут: 5 мин — план, 30 мин — написание, 5 мин — проверка. Никогда не пропускай Conclusion. Aim for Band 7: разнообразная лексика, сложные структуры, чёткая позиция.</p></div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <p>Напиши полное эссе (250 слов) на тему: <em>"Technology has made people less patient. To what extent do you agree?"</em>. Следуй структуре. Используй минимум 3 linking words (Furthermore, However, In conclusion, Moreover, Nevertheless).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 13 -->
+  <div class="day-card" id="d13">
+    <div class="day-head" onclick="toggleCard('d13')">
+      <div class="day-num">13</div>
+      <div class="day-title">Relative Clauses + Cybersecurity Vocabulary</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d13')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Relative Clauses — who/which/that</label>
+        <div class="example-block">
+<span class="label">who = люди | which = вещи | that = и то и другое</span>
+<span class="en">A hacker <span class="hl">who</span> finds vulnerabilities ethically is called a penetration tester.</span>
+<span class="en">SQL injection, <span class="hl">which</span> is one of the most common attacks, can be prevented with parameterized queries.</span>
+<span class="en">A firewall is a system <span class="hl">that</span> monitors and controls incoming network traffic.</span>
+
+<span class="label">Defining (без запятой) vs Non-defining (с запятой)</span>
+<span class="en">The tool <span class="hl">that</span> I use every day is Wireshark. (defining — какой именно)</span>
+<span class="en">Wireshark, <span class="hl">which</span> was created in 1998, is free and open-source. (non-defining — доп. инфо)</span></div>
+      </div>
+      <div class="section-row"><label>Cybersecurity Vocabulary</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Термин</th><th>Перевод</th><th>Определение (en)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>vulnerability</strong></td><td>уязвимость</td><td>A weakness that can be exploited.</td></tr>
+            <tr><td><strong>exploit</strong></td><td>эксплойт</td><td>Code that takes advantage of a vulnerability.</td></tr>
+            <tr><td><strong>patch</strong></td><td>исправление, патч</td><td>A software update that fixes a vulnerability.</td></tr>
+            <tr><td><strong>breach</strong></td><td>утечка, взлом</td><td>Unauthorised access to data or systems.</td></tr>
+            <tr><td><strong>zero-day</strong></td><td>уязвимость нулевого дня</td><td>Unknown vulnerability with no available patch.</td></tr>
+            <tr><td><strong>payload</strong></td><td>полезная нагрузка</td><td>The malicious part of an attack.</td></tr>
+            <tr><td><strong>mitigation</strong></td><td>снижение риска</td><td>Actions to reduce the impact of an attack.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Grammar:</strong> Напиши 6 определений IT-терминов используя relative clauses (firewall, VPN, malware, phishing, encryption, backdoor).</li>
+          <li><strong>Writing:</strong> Напиши абзац (50–60 слов) о вымышленном взломе, используя минимум 5 cybersecurity слов из таблицы.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINI PROJECT W2 -->
+  <div class="mini-project">
+    <div class="mp-label">📝 Итог недели · День 14</div>
+    <h3>Week 2 Portfolio — Самопрезентация + Блог-пост</h3>
+    <p>Два задания которые можно добавить в реальное портфолио.</p>
+    <ul class="checklist">
+      <li>Запиши 2-минутную самопрезентацию на английском: кто ты, твои навыки (Python, SQL, Linux), лучший проект, цель карьеры</li>
+      <li>Напиши 150-слов блог-пост: "Why every developer should learn Linux" — используй Present Perfect, Passive Voice, Modal Verbs</li>
+      <li>Проверь блог-пост: есть ли topic sentences в каждом абзаце? Разнообразная лексика?</li>
+      <li>Оцени самопрезентацию по IELTS критериям: Fluency, Lexical Resource, Grammar, Pronunciation</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════ WEEK 3 ═══════════════════════ -->
+<div id="week3" class="week-section w3">
+  <div class="week-header">
+    <div class="week-icon">📝</div>
+    <div class="week-meta">
+      <h2>Неделя 3 — IELTS Intensive</h2>
+      <p>Дни 15–21 · Speaking, Listening, Reading, Writing · Mock Test</p>
+    </div>
+  </div>
+
+  <!-- DAY 15 -->
+  <div class="day-card" id="d15">
+    <div class="day-head" onclick="toggleCard('d15')">
+      <div class="day-num">15</div>
+      <div class="day-title">Conditionals Type 2 и Type 3</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d15')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Все три типа Conditionals</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Тип</th><th>Формула</th><th>Значение</th><th>IT-пример</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Type 1</strong></td><td>If + Present → will</td><td>Реальное условие</td><td><em>If the server crashes, the backup will activate.</em></td></tr>
+            <tr><td><strong>Type 2</strong></td><td>If + Past → would</td><td>Нереальное/маловероятное</td><td><em>If I had more experience, I would apply for a senior role.</em></td></tr>
+            <tr><td><strong>Type 3</strong></td><td>If + Past Perfect → would have</td><td>Нереальное прошлое (сожаление)</td><td><em>If I had tested the code, the bug would not have made it to production.</em></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="section-row"><label>IELTS Speaking Part 3 — абстрактная дискуссия</label>
+        <div class="example-block">
+<span class="label">Q: "Do you think AI will replace programmers?"</span>
+<span class="en">That's an interesting question. In my view, AI <span class="hl">will</span> automate repetitive coding tasks, but it <span class="hl">won't replace</span> creative problem-solving. If AI <span class="hl">could</span> truly understand business logic, the situation <span class="hl">would</span> be different. However, programmers <span class="hl">who adapt</span> and work alongside AI <span class="hl">will thrive</span>. To be honest, if I <span class="hl">hadn't started</span> learning programming, I <span class="hl">would have been</span> much more worried about this.</span>
+
+<span class="label">Шаблон Part 3:</span>
+<span class="formula">That's an interesting question → In my view / I believe → On the one hand → However → Ultimately, I think...</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Grammar:</strong> Напиши 3 предложения каждого типа Conditional о своём пути в IT.</li>
+          <li><strong>Speaking:</strong> Запишись отвечая на вопросы Part 3: "How has technology changed education?" / "Should governments regulate social media?" — по 1 минуте каждый, используй шаблон.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 16 -->
+  <div class="day-card" id="d16">
+    <div class="day-head" onclick="toggleCard('d16')">
+      <div class="day-num">16</div>
+      <div class="day-title">IELTS Listening — стратегии Sections 1–4</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d16')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Структура IELTS Listening</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Section</th><th>Тип</th><th>Сложность</th><th>Тема</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Диалог</td><td>⭐</td><td>Everyday: бронирование, запись</td></tr>
+            <tr><td>2</td><td>Монолог</td><td>⭐⭐</td><td>Общественная: экскурсия, объявление</td></tr>
+            <tr><td>3</td><td>Диалог</td><td>⭐⭐⭐</td><td>Академическая: студенты, проект</td></tr>
+            <tr><td>4</td><td>Монолог</td><td>⭐⭐⭐⭐</td><td>Академическая лекция (сложнейшая)</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="section-row"><label>Ключевые стратегии</label>
+        <div class="example-block">
+<span class="label">1. Читай вопросы ПЕРЕД прослушиванием</span>
+<span class="ru">→ У тебя есть 30–40 секунд. Используй их! Предугадай о чём будет речь.</span>
+
+<span class="label">2. Ответы — синонимы, не дословные слова</span>
+<span class="en">Question: "What colour is the building?"</span>
+<span class="en">Audio says: "The structure is painted in a crimson shade."</span>
+<span class="en">Answer: red (не crimson — понимаешь синоним)</span>
+
+<span class="label">3. Пропустил один — двигайся дальше</span>
+<span class="ru">→ Остановившись на одном вопросе потеряешь следующие. Пиши всё что слышишь.</span>
+
+<span class="label">4. Орфография критична</span>
+<span class="bad">✗ Fourty → ✗ (неправильно)</span>
+<span class="good">✓ Forty → ✓ (правильно)</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <p>Найди на YouTube "IELTS Listening Practice Test" (Cambridge IELTS). Выполни Section 1 и Section 2. Проверь ответы. Разбери ошибки — почему ошибся? Синоним не узнал? Не успел? Неправильное написание?</p>
+      </div>
+      <div class="links">
+        <a class="lnk" href="https://www.ielts.org/about-ielts/what-is-ielts" target="_blank">📖 IELTS Official</a>
+        <a class="lnk" href="https://britishcouncil.org/exam/ielts" target="_blank">🇬🇧 British Council</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 17 -->
+  <div class="day-card" id="d17">
+    <div class="day-head" onclick="toggleCard('d17')">
+      <div class="day-num">17</div>
+      <div class="day-title">IELTS Reading — Skimming, Scanning, T/F/NG</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d17')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Три техники чтения</label>
+        <div class="example-block">
+<span class="label">Skimming — общее понимание (30 сек на абзац)</span>
+<span class="ru">Читаешь только первое предложение каждого абзаца. Получаешь структуру текста.</span>
+
+<span class="label">Scanning — поиск конкретного слова/числа</span>
+<span class="ru">Ищешь имя, дату, число. Не читаешь — "сканируешь" взглядом.</span>
+
+<span class="label">Detailed reading — только для сложных вопросов</span>
+<span class="ru">Перечитываешь конкретный абзац полностью. Не весь текст!</span></div>
+      </div>
+      <div class="section-row"><label>True / False / Not Given — ловушки</label>
+        <div class="example-block">
+<span class="label">TRUE</span>
+<span class="en">Text: "Python was created by Guido van Rossum in 1991."</span>
+<span class="en">Statement: "Guido van Rossum is the creator of Python." → <span class="good">TRUE</span></span>
+
+<span class="label">FALSE (прямо противоречит тексту)</span>
+<span class="en">Text: "Python was created in 1991."</span>
+<span class="en">Statement: "Python was created in 2000." → <span class="bad">FALSE</span></span>
+
+<span class="label">NOT GIVEN (информации нет — не FALSE!)</span>
+<span class="en">Text: "Python was created by Guido van Rossum."</span>
+<span class="en">Statement: "Guido van Rossum still maintains Python actively." → <span class="hl">NOT GIVEN</span> (текст об этом молчит)</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <p>Прочитай любую статью с The Verge или Ars Technica. Засеки 8 минут. За это время: 1) напиши summary в 2 предложениях, 2) найди главный аргумент, 3) составь 3 вопроса T/F/NG к статье и дай ответы. Используй только skimming и scanning — не читай всё подряд.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 18 -->
+  <div class="day-card" id="d18">
+    <div class="day-head" onclick="toggleCard('d18')">
+      <div class="day-num">18</div>
+      <div class="day-title">IELTS Writing Task 1 — Описание графиков</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d18')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Правила Task 1 (150 слов / 20 минут)</label>
+        <p>Описывай тенденции, сравнивай данные, выделяй ключевые цифры. НЕ давай мнений — только факты. НЕ объясняй причины — только что ты видишь.</p>
+      </div>
+      <div class="section-row"><label>Vocabulary для графиков</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Тренд</th><th>Сильно</th><th>Умеренно</th><th>Медленно</th></tr></thead>
+          <tbody>
+            <tr><td>↑ Рост</td><td>rose sharply / surged</td><td>increased steadily</td><td>grew gradually</td></tr>
+            <tr><td>↓ Падение</td><td>plummeted / dropped sharply</td><td>declined steadily</td><td>fell slightly</td></tr>
+            <tr><td>→ Стабильно</td><td colspan="3">remained stable / levelled off / plateaued</td></tr>
+            <tr><td>Пик</td><td colspan="3">peaked at / reached a high of / hit a maximum of</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="section-row"><label>Пример описания pie chart</label>
+        <div class="example-block">
+<span class="label">Диаграмма: Языки программирования 2024</span>
+<span class="en">Python: 38% · JavaScript: 33% · Java: 17% · Other: 12%</span>
+
+<span class="en">The pie chart illustrates the popularity of programming languages among developers in 2024. Overall, Python and JavaScript together account for over two-thirds of all usage.
+
+Python represents the largest share at 38%, followed closely by JavaScript at 33%. Java holds a considerably smaller proportion at 17%, while all remaining languages combined make up the final 12%. It is notable that Python and JavaScript together dominate the field significantly.</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <p>Напиши 150-слов Task 1 описание для следующей диаграммы: Как разработчики проводят рабочее время — coding 35%, meetings 25%, debugging 20%, documentation 15%, learning 5%. Используй минимум 5 разных graph vocabulary слов из таблицы.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 19 -->
+  <div class="day-card" id="d19">
+    <div class="day-head" onclick="toggleCard('d19')">
+      <div class="day-num">19</div>
+      <div class="day-title">Reported Speech — митинги и баг-репорты</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d19')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Reported Speech — сдвиг времён</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Direct Speech</th><th>Reported Speech</th></tr></thead>
+          <tbody>
+            <tr><td>"The API <strong>is</strong> down."</td><td>She said the API <strong>was</strong> down.</td></tr>
+            <tr><td>"I <strong>found</strong> a bug."</td><td>He said he <strong>had found</strong> a bug.</td></tr>
+            <tr><td>"I <strong>will fix</strong> it tomorrow."</td><td>She said she <strong>would fix</strong> it the following day.</td></tr>
+            <tr><td>"We <strong>have deployed</strong> the update."</td><td>They said they <strong>had deployed</strong> the update.</td></tr>
+            <tr><td>"Don't delete the database!"</td><td>He told me not to delete the database.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="section-row"><label>Standup Meeting — пример</label>
+        <div class="example-block">
+<span class="label">Что сказали на встрече → Как ты передашь коллеге</span>
+<span class="en">Artem said he <span class="hl">had completed</span> the user authentication module. He mentioned that there <span class="hl">was</span> a problem with the token expiration and he <span class="hl">was going to fix</span> it by Thursday. Maya told us that she <span class="hl">would deploy</span> the staging environment the following day. She asked if anyone <span class="hl">could review</span> her PR before then.</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Grammar:</strong> Переведи в Reported Speech: "I fixed the bug." / "We will launch next week." / "Don't push to main!" / "The tests have passed." / "I am working on the feature now."</li>
+          <li><strong>Writing:</strong> Напиши standup report (8 предложений) — что сказали твои 3 воображаемых коллеги. Всё через Reported Speech.</li>
+        </ol>
+      </div>
+      <div class="answer-box">
+        <div class="answer-toggle" onclick="toggleAnswer(this)">Показать ответы</div>
+        <div class="answer-content">
+          <p><span class="en">He said he had fixed the bug. / They announced they would launch the following week. / She told us not to push to main. / The system indicated that the tests had passed. / He said he was working on the feature.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 20 -->
+  <div class="day-card" id="d20">
+    <div class="day-head" onclick="toggleCard('d20')">
+      <div class="day-num">20</div>
+      <div class="day-title">Tech Collocations — как слова сочетаются</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d20')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Developer Collocations — что с чем сочетается</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Глагол</th><th>Существительное</th><th>Полное выражение</th></tr></thead>
+          <tbody>
+            <tr><td>run</td><td>a script / tests / a server</td><td><em>I ran the tests before pushing.</em></td></tr>
+            <tr><td>deploy</td><td>an application / a feature / code</td><td><em>We deployed the app to production.</em></td></tr>
+            <tr><td>handle</td><td>an exception / a request / an error</td><td><em>The function handles exceptions gracefully.</em></td></tr>
+            <tr><td>raise</td><td>an error / an exception / a flag</td><td><em>The server raised a 404 error.</em></td></tr>
+            <tr><td>fix</td><td>a bug / an issue / a vulnerability</td><td><em>She fixed the critical vulnerability.</em></td></tr>
+            <tr><td>scale</td><td>the system / a service / infrastructure</td><td><em>We need to scale the database.</em></td></tr>
+            <tr><td>roll back</td><td>a deployment / an update / changes</td><td><em>We rolled back the failed deployment.</em></td></tr>
+            <tr><td>spin up</td><td>a server / a container / an instance</td><td><em>Let me spin up a Docker container.</em></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="tip tip-info"><div class="tip-label">💡 Зачем collocations?</div><p>Native speakers не говорят "make a mistake" — они говорят именно так. Collocations делают речь естественной. Ошибка: "do a mistake" ✗, "make a mistake" ✓. Учи слова не по отдельности, а вместе с их партнёрами.</p></div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <p>Напиши 10 предложений описывая что ты делал на последней неделе программирования. Используй все 8 collocations из таблицы. Обязательно Past Simple — это описание завершённых действий.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINI PROJECT W3 -->
+  <div class="mini-project">
+    <div class="mp-label">🎤 Mock Test · День 21</div>
+    <h3>Полный IELTS Speaking Mock Test</h3>
+    <p>Запишись выполняя полный Speaking тест — 14 минут. Потом оцени себя.</p>
+    <ul class="checklist">
+      <li><strong>Part 1 (4 мин):</strong> "Do you work or study?" / "What do you do in free time?" / "Do you prefer PC or phone?"</li>
+      <li><strong>Part 2 (4 мин):</strong> Говори 2 минуты о "Describe a technological device that changed your life" — план: что это, как нашёл, как использую, почему важно</li>
+      <li><strong>Part 3 (6 мин):</strong> "How is tech changing education?" / "What are risks of depending on tech?" / "Will AI replace teachers?"</li>
+      <li>Оцени запись по 4 критериям IELTS (Fluency, Lexis, Grammar, Pronunciation) — 1 до 9</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════ WEEK 4 ═══════════════════════ -->
+<div id="week4" class="week-section w4">
+  <div class="week-header">
+    <div class="week-icon">🚀</div>
+    <div class="week-meta">
+      <h2>Неделя 4 — Fluency & Advanced</h2>
+      <p>Дни 22–30 · Phrasal Verbs, Advanced Grammar, Business English · Финальный проект</p>
+    </div>
+  </div>
+
+  <!-- DAY 22 -->
+  <div class="day-card" id="d22">
+    <div class="day-head" onclick="toggleCard('d22')">
+      <div class="day-num">22</div>
+      <div class="day-title">Phrasal Verbs — язык разработчика</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d22')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Developer Phrasal Verbs</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Phrasal Verb</th><th>Значение</th><th>IT-пример</th></tr></thead>
+          <tbody>
+            <tr><td><strong>set up</strong></td><td>настроить, установить</td><td><em>I set up the development environment.</em></td></tr>
+            <tr><td><strong>break down</strong></td><td>сломаться / разобрать</td><td><em>The server broke down during peak hours.</em></td></tr>
+            <tr><td><strong>log in / out</strong></td><td>войти / выйти</td><td><em>Users log in with their email.</em></td></tr>
+            <tr><td><strong>back up</strong></td><td>создать резервную копию</td><td><em>Back up your data before the update.</em></td></tr>
+            <tr><td><strong>roll back</strong></td><td>откатить изменения</td><td><em>We had to roll back the deployment.</em></td></tr>
+            <tr><td><strong>look into</strong></td><td>расследовать, изучить</td><td><em>Let me look into this bug.</em></td></tr>
+            <tr><td><strong>figure out</strong></td><td>разобраться, решить</td><td><em>I finally figured out the recursion issue.</em></td></tr>
+            <tr><td><strong>hand off</strong></td><td>передать задачу</td><td><em>She handed off the task to the DevOps team.</em></td></tr>
+            <tr><td><strong>spin up</strong></td><td>запустить (сервер/контейнер)</td><td><em>Let me spin up a new Docker container.</em></td></tr>
+            <tr><td><strong>scale up</strong></td><td>масштабировать</td><td><em>We need to scale up the infrastructure.</em></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <p>Напиши "день из жизни разработчика" (10–12 предложений, Past Simple). Используй минимум 8 phrasal verbs из таблицы. Пример начала: <em>"I set up my development environment first thing in the morning. Then the CI/CD pipeline broke down, so I had to look into the logs..."</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 23 -->
+  <div class="day-card" id="d23">
+    <div class="day-head" onclick="toggleCard('d23')">
+      <div class="day-num">23</div>
+      <div class="day-title">Gerunds & Infinitives — тонкости</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d23')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Gerund (V+ing) vs Infinitive (to+V)</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Глагол + Gerund</th><th>Пример</th></tr></thead>
+          <tbody>
+            <tr><td>enjoy, avoid, finish, recommend, consider, practice</td><td><em>I enjoy <strong>writing</strong> Python scripts. / Avoid <strong>using</strong> global variables.</em></td></tr>
+          </tbody>
+        </table></div>
+        <div class="table-wrap" style="margin-top:8px"><table>
+          <thead><tr><th>Глагол + Infinitive</th><th>Пример</th></tr></thead>
+          <tbody>
+            <tr><td>want, plan, decide, need, hope, manage, fail, refuse</td><td><em>I plan <strong>to learn</strong> Docker. / I need <strong>to fix</strong> this bug.</em></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="section-row"><label>Глаголы меняющие значение</label>
+        <div class="example-block">
+<span class="en"><span class="hl">stop + gerund</span> → перестать делать: I stopped <span class="hl">using</span> Windows.</span>
+<span class="en"><span class="hl">stop + infinitive</span> → остановиться чтобы сделать: I stopped <span class="hl">to check</span> the logs.</span>
+
+<span class="en"><span class="hl">remember + gerund</span> → помню что делал: I remember <span class="hl">pushing</span> the commit.</span>
+<span class="en"><span class="hl">remember + infinitive</span> → не забыть сделать: Remember <span class="hl">to push</span> your changes!</span>
+
+<span class="en"><span class="hl">try + gerund</span> → попробовать (эксперимент): Try <span class="hl">restarting</span> the server.</span>
+<span class="en"><span class="hl">try + infinitive</span> → попытаться: I tried <span class="hl">to find</span> the error but failed.</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Grammar:</strong> Напиши 10 предложений о своих привычках программирования используя gerund и infinitive (mix обоих).</li>
+          <li><strong>Speaking:</strong> Расскажи 1 минуту о своих планах на следующие 6 месяцев — что планируешь изучить, что хочешь построить. Используй: <em>I am planning to..., I enjoy..., I need to..., I hope to..., I consider...</em></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 24 -->
+  <div class="day-card" id="d24">
+    <div class="day-head" onclick="toggleCard('d24')">
+      <div class="day-num">24</div>
+      <div class="day-title">Wish / If Only / Mixed Conditionals</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d24')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Wish и If Only</label>
+        <div class="example-block">
+<span class="label">Wish + Past Simple → хочу изменить настоящее</span>
+<span class="en">I wish I <span class="hl">knew</span> more about machine learning.</span>
+<span class="en">I wish I <span class="hl">had</span> more time to code.</span>
+
+<span class="label">Wish + Past Perfect → сожаление о прошлом</span>
+<span class="en">I wish I <span class="hl">had started</span> coding when I was 15.</span>
+<span class="en">If only I <span class="hl">hadn't pushed</span> that bug to production!</span>
+
+<span class="label">Mixed Conditional → прошлое влияет на настоящее</span>
+<span class="en">If I <span class="hl">had learned</span> English earlier, I <span class="hl">would be</span> fluent by now.</span>
+<span class="en">If I <span class="hl">had studied</span> networking, I <span class="hl">would understand</span> this error.</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Grammar:</strong> Напиши 4 предложения с wish, 2 с if only, и 3 mixed conditionals — всё о своём пути в IT и изучении английского.</li>
+          <li><strong>Reflection:</strong> Напиши абзац (50–60 слов) — что бы изменил в своём пути обучения если бы мог? Используй все три структуры.</li>
+        </ol>
+      </div>
+      <div class="answer-box">
+        <div class="answer-toggle" onclick="toggleAnswer(this)">Пример ответа</div>
+        <div class="answer-content">
+          <p><span class="en">I wish I had started learning English more seriously two years ago. If only I hadn't wasted time on ineffective methods! I wish I knew advanced algorithms better right now. If I had studied Python from the beginning, I would be building more complex projects today. If only the journey had been clearer from the start — I would feel much more confident.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 25 -->
+  <div class="day-card" id="d25">
+    <div class="day-head" onclick="toggleCard('d25')">
+      <div class="day-num">25</div>
+      <div class="day-title">Business English: переговоры и дедлайны</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d25')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Профессиональные фразы</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Ситуация</th><th>Фраза</th></tr></thead>
+          <tbody>
+            <tr><td>Зарплата</td><td><em>Based on my research, I was expecting a range of $X–$Y. / I believe my skills justify...</em></td></tr>
+            <tr><td>Несогласие</td><td><em>I see your point, however... / With respect, I think we should consider...</em></td></tr>
+            <tr><td>Дедлайн</td><td><em>Could we push the deadline to Friday? / I need to flag that this timeline might be tight.</em></td></tr>
+            <tr><td>Уточнение</td><td><em>Could you clarify what you mean by...? / Just to confirm, are you saying that...?</em></td></tr>
+            <tr><td>Согласие</td><td><em>That sounds reasonable. / I'm on board with that approach.</em></td></tr>
+            <tr><td>Отказ (вежливо)</td><td><em>I appreciate the offer, however... / I'm afraid that won't be possible because...</em></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li><strong>Dialogue:</strong> Напиши диалог (12 реплик) между разработчиком и менеджером — обсуждают пропущенный дедлайн и план исправления. Используй минимум 6 фраз из таблицы.</li>
+          <li><strong>Speaking:</strong> Запишись разыгрывая обе роли (разработчик и менеджер) вслух. Следи за интонацией — переговоры должны звучать уверенно, не агрессивно.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 26 -->
+  <div class="day-card" id="d26">
+    <div class="day-head" onclick="toggleCard('d26')">
+      <div class="day-num">26</div>
+      <div class="day-title">Technical Writing: README и документация</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d26')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Правила технической документации</label>
+        <div class="example-block">
+<span class="label">✗ Плохо → ✓ Хорошо</span>
+<span class="bad">✗ The function can be used by the developer to process user data.</span>
+<span class="good">✓ Use process_user() to validate and save user data.</span>
+
+<span class="bad">✗ It should be noted that errors may occur if the input is empty.</span>
+<span class="good">✓ An error occurs if the input is empty.</span>
+
+<span class="bad">✗ Click on the button which is green in order to submit the form.</span>
+<span class="good">✓ Click the green Submit button.</span>
+
+<span class="ru">→ Правила: активный залог, короткие предложения, конкретные инструкции.</span></div>
+      </div>
+      <div class="section-row"><label>Структура хорошего README</label>
+        <div class="example-block">
+<span class="label"># Project Name</span>
+<span class="en">One-line description of what it does.</span>
+
+<span class="label">## Features</span>
+<span class="en">- Feature 1</span>
+
+<span class="label">## Installation</span>
+<span class="en">pip install -r requirements.txt</span>
+
+<span class="label">## Usage</span>
+<span class="en">python app.py --port 8080</span>
+
+<span class="label">## Configuration</span>
+<span class="en">Set DB_URL in .env file.</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <p>Напиши README.md для своего лучшего Python-проекта (или придумай). 150 слов. Активный залог, короткие предложения. Включи: описание, установку, использование (с примером команды), конфигурацию. Потом проверь: нет ли пассивного залога там где можно активный?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 27 -->
+  <div class="day-card" id="d27">
+    <div class="day-head" onclick="toggleCard('d27')">
+      <div class="day-num">27</div>
+      <div class="day-title">Произношение: tech words и ударение</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d27')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Частые ошибки произношения</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Слово</th><th>❌ Неправильно</th><th>✅ Правильно</th><th>Транскрипция</th></tr></thead>
+          <tbody>
+            <tr><td><strong>algorithm</strong></td><td>al-go-RITHM</td><td>AL-go-ri-thm</td><td>/ˈælɡərɪðəm/</td></tr>
+            <tr><td><strong>cache</strong></td><td>cache (как "каше")</td><td>cash (как деньги)</td><td>/kæʃ/</td></tr>
+            <tr><td><strong>queue</strong></td><td>kweh / kyu-e</td><td>cue (как сигнал)</td><td>/kjuː/</td></tr>
+            <tr><td><strong>boolean</strong></td><td>BOO-LEAN</td><td>BOO-lee-un</td><td>/ˈbuːliən/</td></tr>
+            <tr><td><strong>schema</strong></td><td>SHEMA</td><td>SKEE-muh</td><td>/ˈskiːmə/</td></tr>
+            <tr><td><strong>regex</strong></td><td>re-GEX</td><td>REH-jex</td><td>/ˈreɡeks/</td></tr>
+            <tr><td><strong>GitHub</strong></td><td>jit-HUB</td><td>GIT-hub</td><td>/ˈɡɪthʌb/</td></tr>
+            <tr><td><strong>API</strong></td><td>"апи" как слово</td><td>A-P-I (три буквы)</td><td>/ˌeɪ piː ˈaɪ/</td></tr>
+            <tr><td><strong>SQL</strong></td><td>—</td><td>S-Q-L или "sequel"</td><td>оба варианта верны</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="section-row"><label>Ударение в словах</label>
+        <div class="example-block">
+<span class="en">de·VEL·op·er (ударение на 2-й слог)</span>
+<span class="en">cy·ber·se·CU·ri·ty (ударение на 4-й слог)</span>
+<span class="en">au·then·ti·CA·tion (ударение на 4-й слог)</span>
+<span class="en">en·CRYP·tion (ударение на 2-й слог)</span>
+<span class="en">vul·ner·a·BIL·i·ty (ударение на 4-й слог)</span></div>
+      </div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li>Запишись произнося все 9 слов из таблицы вслух. Потом проверь на Forvo.com — послушай как произносят носители.</li>
+          <li>Запишись произнося 5-слов-ударений правильно. Повтори 3 раза каждое.</li>
+          <li>Придумай 3 технических предложения используя слова из первой таблицы — запиши вслух.</li>
+        </ol>
+      </div>
+      <div class="links">
+        <a class="lnk" href="https://forvo.com" target="_blank">🔊 Forvo — произношение</a>
+        <a class="lnk" href="https://www.cambridge.org/dictionary" target="_blank">📖 Cambridge Dict</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 28 -->
+  <div class="day-card" id="d28">
+    <div class="day-head" onclick="toggleCard('d28')">
+      <div class="day-num">28</div>
+      <div class="day-title">Advanced Reading: Tech News каждый день</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d28')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Лучшие источники для tech English</label>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Источник</th><th>Сложность</th><th>Тематика</th></tr></thead>
+          <tbody>
+            <tr><td>The Verge</td><td>⭐⭐</td><td>Новости tech, гаджеты</td></tr>
+            <tr><td>TechCrunch</td><td>⭐⭐⭐</td><td>Стартапы, инвестиции</td></tr>
+            <tr><td>Ars Technica</td><td>⭐⭐⭐⭐</td><td>Глубокий tech-анализ</td></tr>
+            <tr><td>Hacker News</td><td>⭐⭐⭐</td><td>Программирование, обсуждения</td></tr>
+            <tr><td>MIT Technology Review</td><td>⭐⭐⭐⭐⭐</td><td>Академический, наука</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="section-row"><label>Метод чтения (15 минут / день)</label>
+        <div class="example-block">
+<span class="label">1. Выбери статью (2 мин)</span>
+<span class="ru">→ Skimming: читаешь только заголовок, подзаголовки, первые предложения абзацев</span>
+
+<span class="label">2. Прочитай полностью (8 мин)</span>
+<span class="ru">→ Выделяй незнакомые слова</span>
+
+<span class="label">3. Reflection (5 мин)</span>
+<span class="ru">→ 2 предложения — о чём статья? / 3 новых слова с определением / 1 собственное мнение</span></div>
+      </div>
+      <div class="tip tip-info"><div class="tip-label">📅 Привычка</div><p>15 минут чтения tech-новостей по утрам = лучший ROI для улучшения английского. Через 30 дней словарный запас вырастет на 200–300 слов из твоей профессиональной области.</p></div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <ol>
+          <li>Прочитай 1 статью с любого источника из таблицы. Напиши: summary (2 предложения), 5 новых слов, своё мнение (2 предложения).</li>
+          <li>Запишись вслух пересказывая статью (1 минута) — без текста, только память.</li>
+        </ol>
+      </div>
+      <div class="links">
+        <a class="lnk" href="https://www.theverge.com" target="_blank">📰 The Verge</a>
+        <a class="lnk" href="https://techcrunch.com" target="_blank">📰 TechCrunch</a>
+        <a class="lnk" href="https://news.ycombinator.com" target="_blank">🔶 Hacker News</a>
+        <a class="lnk" href="https://www.technologyreview.com" target="_blank">🔬 MIT Tech Review</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 29 -->
+  <div class="day-card" id="d29">
+    <div class="day-head" onclick="toggleCard('d29')">
+      <div class="day-num">29</div>
+      <div class="day-title">Full Mock IELTS: Writing + Speaking</div>
+      <div class="day-check" onclick="event.stopPropagation();markDone('d29')">✓</div>
+      <div class="day-arrow">▶</div>
+    </div>
+    <div class="day-body">
+      <div class="section-row"><label>Полный IELTS Writing Test (60 минут)</label>
+        <div class="example-block">
+<span class="label">Task 1 (20 мин, 150 слов)</span>
+<span class="en">Опиши bar chart: Популярность языков программирования 2024 — Python 38%, JavaScript 33%, Java 17%, C++ 8%, Others 4%</span>
+
+<span class="label">Task 2 (40 мин, 250 слов)</span>
+<span class="en">Тема: "Artificial intelligence will eventually make many jobs obsolete. To what extent do you agree with this view?"</span>
+<span class="ru">→ Строго следи за временем! Task 1 = 20 мин, Task 2 = 40 мин. Не меняй!</span></div>
+      </div>
+      <div class="section-row"><label>IELTS Speaking Mock (14 минут)</label>
+        <div class="example-block">
+<span class="label">Part 1 (4 мин) — отвечай 2–3 предложениями</span>
+<span class="en">• What do you do — work or study? • What technology do you use daily? • Do you prefer reading news online or in print?</span>
+
+<span class="label">Part 2 (4 мин) — говори 2 минуты</span>
+<span class="en">Describe a technology company you admire. What is it? Why do you admire it? What would you like to do there?</span>
+
+<span class="label">Part 3 (6 мин) — абстрактная дискуссия</span>
+<span class="en">• How is AI changing the workplace? • Should tech companies be regulated more strictly? • What skills will be most valuable in the future?</span></div>
+      </div>
+      <div class="tip"><div class="tip-label">⏱ Ключевое</div><p>Засеки время строго. После каждого задания оцени себя честно: использовал сложные структуры? Разнообразную лексику? Чёткую структуру? Избегал ошибок с временами?</p></div>
+      <div class="task-box"><div class="task-label">Задание дня</div>
+        <p>Выполни полный mock test: 60 минут Writing + запись 14 минут Speaking. Всё по таймеру. Проверь Writing на Grammarly. Прослушай Speaking запись и отметь ошибки произношения и грамматики.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINI PROJECT W4 / FINAL -->
+  <div class="mini-project">
+    <div class="mp-label">🎓 Финальный проект · День 30</div>
+    <h3>English Portfolio — Твоё профессиональное портфолио</h3>
+    <p>Собери всё что создал за 30 дней в профессиональное портфолио на английском.</p>
+    <ul class="checklist">
+      <li><strong>Video:</strong> Запиши 3-минутное видео — расскажи о себе, своих технических проектах (Python, Linux, SQL, сети) и карьерной цели. Без бумажки, только из памяти.</li>
+      <li><strong>LinkedIn About:</strong> Напиши раздел "About" для LinkedIn (150 слов) — кто ты, что умеешь, что ищешь. Используй ключевые слова: backend developer, Python, PostgreSQL, cybersecurity.</li>
+      <li><strong>Cover Letter:</strong> Напиши cover letter (200 слов) для вакансии junior backend developer в tech-компанию мечты. Используй Present Perfect для опыта и Future для планов.</li>
+      <li><strong>Vocabulary List:</strong> Создай список из 50 слов которые узнал за месяц — с примером предложения для каждого. Это твой личный словарь.</li>
+      <li><strong>Bonus:</strong> Напиши 300-слов блог-пост "What I learned in 30 days of studying backend development" — опубликуй на Medium или Dev.to.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  English за 30 дней · IELTS · Grammar · Tech English · <span>2025</span>
+</div>
+</div>
+
+<script>
+const KEY = 'english30_v1';
+let done = JSON.parse(localStorage.getItem(KEY) || '[]');
+
+function markDone(id) {
+  const card = document.getElementById(id);
+  if (done.includes(id)) {
+    done = done.filter(d => d !== id);
+    card.classList.remove('done');
+  } else {
+    done.push(id);
+    card.classList.add('done');
+  }
+  localStorage.setItem(KEY, JSON.stringify(done));
+  updateProgress();
+}
+
+function updateProgress() {
+  const pct = Math.round(done.length / 26 * 100);
+  document.getElementById('prog-val').textContent = pct + '%';
+  document.getElementById('bar').style.width = pct + '%';
+  document.getElementById('done-count').textContent = done.length;
+}
+
+function toggleCard(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+function toggleAnswer(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('show');
+}
+
+function showWeek(n) {
+  document.querySelectorAll('.week-section').forEach(s => s.classList.remove('show'));
+  document.getElementById('week' + n).classList.add('show');
+  document.querySelectorAll('.wnav').forEach(b => {
+    b.className = 'wnav';
+  });
+  document.querySelectorAll('.wnav')[n - 1].classList.add('active-w' + n);
+}
+
+done.forEach(id => {
+  const c = document.getElementById(id);
+  if (c) c.classList.add('done');
+});
+updateProgress();
+</script>
+</body>
+</html>
